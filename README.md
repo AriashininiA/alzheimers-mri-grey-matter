@@ -6,15 +6,19 @@ Course-style project that processes structural brain MRI (NIfTI) with Python: co
 
 ```text
 .
-├── README.md                 # This file
-├── requirements.txt          # Python dependencies
+├── README.md                      # Project overview and usage
+├── requirements.txt               # Python dependencies (pip)
+├── .gitignore                     # Ignores venv, __pycache__, *.nii, checkpoints, etc.
 ├── src/
-│   └── nifti_brain_masks.py # NIfTI slices, thresholds, tissue masks, voxel metrics
+│   └── nifti_brain_masks.py       # NIfTI I/O, thresholds, tissue masks, voxel metrics
 ├── notebooks/
-│   └── alzheimers_mri_report.ipynb   # Full report (methods, figures, results)
+│   └── alzheimers_mri_report.ipynb  # Jupyter report: methods, figures, results
 └── data/
-    └── README.md             # Where to place subject*.nii (not tracked in git)
+    ├── README.md                  # Expected filenames for the four subject volumes
+    └── subject*_*.nii             # Your scans live here locally (see .gitignore)
 ```
+
+The four NIfTI files (`subject1_01.nii` … `subject2_02.nii`) are loaded from `data/` by the notebook. They are **not** part of the git tree by default so clones stay small and sensitive data is not pushed accidentally.
 
 ## Methods (short)
 
@@ -58,7 +62,3 @@ The first notebook cell adds `src/` to the path and resolves scans under `data/`
 ## Disclaimer
 
 This is an educational pipeline: segmentation and “volume” are simplistic vetted counts, not clinical measures. Do not use for diagnosis or treatment decisions.
-
-## Authors
-
-Group 3A — see the notebook title and narrative for full attribution and references.
